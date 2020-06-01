@@ -73,6 +73,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     //Need store dummy data to create initial querying fields on server DB or else it will respond slow, can comment this out after the tables are succesffully created.
                     //Note if you don't have this lines it will still work, but will error some in the console until it can complete it's first synch to the Cloud
                     ParseCareKitUtility.populateDummyParseData()
+                }else{
+                    print("***Error logging into Parse Server. Are you running parse-postgres and is the initialization complete? Check http://localhost:1337 in your browser. If you are still having problems check for help here: https://github.com/netreconlab/parse-postgres#getting-started ***")
+                    print("Parse error \(String(describing: error))")
                 }
             }
                 
