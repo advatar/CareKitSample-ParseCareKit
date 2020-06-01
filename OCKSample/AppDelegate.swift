@@ -40,6 +40,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Manages synchronization of a CoreData store
     lazy var synchronizedStoreManager: OCKSynchronizedStoreManager = {
         let parse = ParseRemoteSynchronizationManager(uuid: UUID(uuidString: "3B5FD9DA-C278-4582-90DC-101C08E7FC98")!, auto: true)
+        parse.delegate = self
+        parse.parseRemoteDelegate = self
         let store = OCKStore(name: "SampleAppStore", type: .onDisk, remote: parse)
         store.populateSampleData()
         let manager = OCKSynchronizedStoreManager(wrapping: store)
@@ -74,8 +76,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     //Note if you don't have this lines it will still work, but will error some in the console until it can complete it's first synch to the Cloud
                     ParseCareKitUtility.populateDummyParseData()
                 }else{
-                    print("***Error logging into Parse Server. Are you running parse-postgres and is the initialization complete? Check http://localhost:1337 in your browser. If you are still having problems check for help here: https://github.com/netreconlab/parse-postgres#getting-started ***")
-                    print("Parse error \(String(describing: error))")
+                    print("*** Error logging into Parse Server. Are you running parse-postgres and is the initialization complete? Check http://localhost:1337 in your browser. If you are still having problems check for help here: https://github.com/netreconlab/parse-postgres#getting-started ***")
+                    print("Parse error: \(String(describing: error))")
                 }
             }
                 
@@ -166,4 +168,41 @@ private extension OCKStore {
 
         addContacts([contact1, contact2])
     }
+}
+
+extension AppDelegate: OCKRemoteSynchronizationDelegate, ParseRemoteSynchronizationDelegate{
+    func didRequestSynchronization(_ remote: OCKRemoteSynchronizable) {
+        print("Implement")
+    }
+    
+    func remote(_ remote: OCKRemoteSynchronizable, didUpdateProgress progress: Double) {
+        print("Implement")
+    }
+    
+    func chooseConflictResolutionPolicy(_ conflict: OCKMergeConflictDescription, completion: @escaping (OCKMergeConflictResolutionPolicy) -> Void) {
+        let conflictPolicy = OCKMergeConflictResolutionPolicy.keepDevice
+        completion(conflictPolicy)
+    }
+    
+    func storeUpdatedOutcome(_ outcome: OCKOutcome) {
+        synchronizedStoreManager.store.updateAnyOutcome(outcome, callbackQueue: .global(qos: .background), completion: nil)
+    }
+    
+    func storeUpdatedCarePlan(_ carePlan: OCKCarePlan) {
+        synchronizedStoreManager.store.updateAnyCarePlan(carePlan, callbackQueue: .global(qos: .background), completion: nil)
+    }
+    
+    func storeUpdatedContact(_ contact: OCKContact) {
+        synchronizedStoreManager.store.updateAnyContact(contact, callbackQueue: .global(qos: .background), completion: nil)
+    }
+    
+    func storeUpdatedPatient(_ patient: OCKPatient) {
+        synchronizedStoreManager.store.updateAnyPatient(patient, callbackQueue: .global(qos: .background), completion: nil)
+    }
+    
+    func storeUpdatedTask(_ task: OCKTask) {
+        synchronizedStoreManager.store.updateAnyTask(task, callbackQueue: .global(qos: .background), completion: nil)
+    }
+    
+    
 }
