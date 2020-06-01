@@ -1,0 +1,65 @@
+PODS:
+  - Bolts/Tasks (1.9.1)
+  - CareKit (2.0):
+    - CareKitStore (= 2.0)
+    - CareKitUI (= 2.0)
+  - CareKitStore (2.0)
+  - CareKitUI (2.0)
+  - Parse (1.18.0):
+    - Parse/Core (= 1.18.0)
+  - Parse/Core (1.18.0):
+    - Bolts/Tasks (= 1.9.1)
+  - ParseCareKit (1.0):
+    - CareKit (~> 2.0)
+    - Parse (~> 1.18)
+
+DEPENDENCIES:
+  - CareKit (from `https://github.com/cbaker6/CareKit.git`, branch `pod`)
+  - CareKitStore (from `https://github.com/cbaker6/CareKit.git`, branch `pod_vector`)
+  - CareKitUI (from `https://github.com/cbaker6/CareKit.git`, branch `pod`)
+  - ParseCareKit (from `https://github.com/netreconlab/ParseCareKit.git`, branch `master`)
+
+SPEC REPOS:
+  trunk:
+    - Bolts
+    - Parse
+
+EXTERNAL SOURCES:
+  CareKit:
+    :branch: pod
+    :git: https://github.com/cbaker6/CareKit.git
+  CareKitStore:
+    :branch: pod_vector
+    :git: https://github.com/cbaker6/CareKit.git
+  CareKitUI:
+    :branch: pod
+    :git: https://github.com/cbaker6/CareKit.git
+  ParseCareKit:
+    :branch: master
+    :git: https://github.com/netreconlab/ParseCareKit.git
+
+CHECKOUT OPTIONS:
+  CareKit:
+    :commit: d1078974e32df3dbe31a848786fe24daccbbfb53
+    :git: https://github.com/cbaker6/CareKit.git
+  CareKitStore:
+    :commit: 2042cf1a01c82d1480c36badc75266925e380421
+    :git: https://github.com/cbaker6/CareKit.git
+  CareKitUI:
+    :commit: d1078974e32df3dbe31a848786fe24daccbbfb53
+    :git: https://github.com/cbaker6/CareKit.git
+  ParseCareKit:
+    :commit: e6e902a296989bc04d3b79e7d9de860095ce0656
+    :git: https://github.com/netreconlab/ParseCareKit.git
+
+SPEC CHECKSUMS:
+  Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
+  CareKit: 11afe5f22152327020f9e3ff03efefe9542e1ea9
+  CareKitStore: a0aeabb8c7dd7430c23ff537e7c45c8a6c829daa
+  CareKitUI: a8b24291173ea37c22466c4003d908abb962bcb4
+  Parse: 79bdda34fdb7eb2a707a43a951c8aae236cb3e34
+  ParseCareKit: 2a1eaae8f5dbd29c7fd2395f0869e159dd1d2ea7
+
+PODFILE CHECKSUM: 766ff9ed5a6d6d9aad8fe9e058b3ceb999253bfb
+
+COCOAPODS: 1.9.1
