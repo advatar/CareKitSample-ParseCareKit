@@ -56,13 +56,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.initialize(with: configuration)
         PFUser.enableRevocableSessionInBackground()
         
-        //Set default ACL for all Classes
+        //Set default ACL for all Parse Classes
         let defaultACL = PFACL()
         defaultACL.hasPublicReadAccess = false
         defaultACL.hasPublicWriteAccess = false
         PFACL.setDefault(defaultACL, withAccessForCurrentUser:true)
         
-        //If the user is logged in, log them in
+        //If the user isn't logged in, log them in
         guard let _ = PFUser.current() else{
             
             PFAnonymousUtils.logIn{
@@ -70,7 +70,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
                 if user != nil{
                     print("Parse login successful \(user!)")
-                    //Need store dummy data to create initial fields on server DB, can comment this out after the tables are succesffully created
+                    //Need store dummy data to create initial querying fields on server DB or else it will respond slow, can comment this out after the tables are succesffully created.
+                    //Note if you don't have this lines it will still work, but will error some in the console until it can complete it's first synch to the Cloud
                     ParseCareKitUtility.populateDummyParseData()
                 }
             }
