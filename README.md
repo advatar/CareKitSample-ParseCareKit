@@ -24,5 +24,6 @@ Parse Dashboard is the easiest way to view your data in the Cloud (or local mach
 1. Open your browser and go to http://localhost:4040/
 2. Username: `parse`
 3. Password: `1234`
+4. Be sure to refresh your browser to see new changes synched from your CareKitSample app
 
 Note that CareKit data is extremely sensitive and you are responsible for ensuring your parse-server meets HIPAA compliance.
