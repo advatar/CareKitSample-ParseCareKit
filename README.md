@@ -16,7 +16,7 @@ You can setup your parse-server locally to test using [parse-hipaa](https://gith
 1. Fork [CareKitSample-ParseCareKit](https://github.com/netreconlab/ParseCareKit)
 2. Open `OCKSample.xcworkspace` in Xcode
 3. You may need to configure your "Team" and "Bundle Identifier" in "Signing and Capabilities"
-4. Build the project. If you get any errors, type "pod update" in the project director in Terminal
+4. Build the project. If you get any errors, type "pod update" in the project directory in Terminal
 5. Run the app and data will synchronize with parse-hipaa via http://localhost:1337/parse automatically
 
 ## View your data in Parse Dashboard
