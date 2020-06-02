@@ -50,12 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let configuration = ParseClientConfiguration {
-            $0.applicationId = "E036A0C5-6829-4B40-9B3B-3E05F6DF32B2"
-            $0.server = "http://localhost:1337/parse"
-            $0.isLocalDatastoreEnabled = false
-        }
-        Parse.initialize(with: configuration)
+        ParseCareKitUtility.setupServer()
         PFUser.enableRevocableSessionInBackground()
         
         //Set default ACL for all Parse Classes

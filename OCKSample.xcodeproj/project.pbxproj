@@ -10,6 +10,7 @@
 		03F0600A2331946600CCE09B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F060092331946600CCE09B /* SceneDelegate.swift */; };
 		03FEBEC6237A0D6100ACB35E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 03FEBEC4237A0D6100ACB35E /* Localizable.strings */; };
 		03FEBEC7237A0D6100ACB35E /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 03FEBEC5237A0D6100ACB35E /* Localizable.stringsdict */; };
+		914BE6EC24867D3900AE5D1D /* ParseCareKit.plist in Resources */ = {isa = PBXBuildFile; fileRef = 914BE6EB24867D3900AE5D1D /* ParseCareKit.plist */; };
 		E72B2C0A226939E3009A9438 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B2C09226939E3009A9438 /* AppDelegate.swift */; };
 		E72B2C14226939E4009A9438 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E72B2C12226939E4009A9438 /* LaunchScreen.storyboard */; };
 		E7440E4F229477F7007AD30A /* CareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7440E4E229477F7007AD30A /* CareViewController.swift */; };
@@ -23,6 +24,7 @@
 		03FEBEC4237A0D6100ACB35E /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		03FEBEC5237A0D6100ACB35E /* Localizable.stringsdict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.stringsdict; path = Localizable.stringsdict; sourceTree = "<group>"; };
 		89B0A909D380CE895C0AB0BD /* Pods-OCKSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OCKSample.debug.xcconfig"; path = "Target Support Files/Pods-OCKSample/Pods-OCKSample.debug.xcconfig"; sourceTree = "<group>"; };
+		914BE6EB24867D3900AE5D1D /* ParseCareKit.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ParseCareKit.plist; sourceTree = "<group>"; };
 		D8798AEFC7C1C9E218C4FF9B /* Pods_OCKSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OCKSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E72B2C06226939E3009A9438 /* OCKSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OCKSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E72B2C09226939E3009A9438 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -48,6 +50,7 @@
 		71A79C8A2294FBA1002B96D3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				914BE6EB24867D3900AE5D1D /* ParseCareKit.plist */,
 				03FEBEC4237A0D6100ACB35E /* Localizable.strings */,
 				03FEBEC5237A0D6100ACB35E /* Localizable.stringsdict */,
 				E7C4CA0A22809AD500ECC3D7 /* Assets.xcassets */,
@@ -164,6 +167,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				914BE6EC24867D3900AE5D1D /* ParseCareKit.plist in Resources */,
 				E7C4CA0B22809AD500ECC3D7 /* Assets.xcassets in Resources */,
 				03FEBEC7237A0D6100ACB35E /* Localizable.stringsdict in Resources */,
 				03FEBEC6237A0D6100ACB35E /* Localizable.strings in Resources */,
