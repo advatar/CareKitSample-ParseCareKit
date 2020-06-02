@@ -22,7 +22,7 @@ You can setup your parse-server locally to test using [parse-hipaa](https://gith
 
 ## View your data in Parse Dashboard
 Parse Dashboard is the easiest way to view your data in the Cloud (or local machine in this example) and comes with [parse-hipaa](https://github.com/netreconlab/parse-hipaa). To access:
-1. Open your browser and go to http://localhost:4040/
+1. Open your browser and go to http://localhost:4040/dashboard
 2. Username: `parse`
 3. Password: `1234`
 4. Be sure to refresh your browser to see new changes synched from your CareKitSample app
