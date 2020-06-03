@@ -177,7 +177,17 @@ extension AppDelegate: OCKRemoteSynchronizationDelegate, ParseRemoteSynchronizat
     }
     
     func storeUpdatedOutcome(_ outcome: OCKOutcome) {
-        synchronizedStoreManager.store.updateAnyOutcome(outcome, callbackQueue: .global(qos: .background), completion: nil)
+        guard let store = synchronizedStoreManager.store as? OCKStore else{return}
+        store.updateOutcome(outcome, callbackQueue: .global(qos: .background)){
+            results in
+            switch results{
+            
+            case .success(_):
+                store.synchronize(){_ in} //Force synchronize after fix
+            case .failure(let error):
+                print("Error storing fix \(error)")
+            }
+        }
     }
     
     func storeUpdatedCarePlan(_ carePlan: OCKCarePlan) {
