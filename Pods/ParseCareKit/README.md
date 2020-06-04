@@ -3,9 +3,24 @@
 
 **Use at your own risk. There is no promise that this is HIPAA compliant and we are not responsible for any mishandling of your data**
 
-This framework is an API to synchronize [CareKit](https://github.com/carekit-apple/CareKit) 2.0+ data with [parse-server](https://github.com/parse-community/parse-server). For the server-side, you can use [parse-hipaa](https://github.com/netreconlab/parse-hipaa) to setup a HIPAA compliant Parse/[Postgres](https://www.postgresql.org) or Parse/[Mongo](https://www.mongodb.com) backend along with [Parse Dashboard](https://github.com/parse-community/parse-dashboard).
+This framework is an API to synchronize [CareKit](https://github.com/carekit-apple/CareKit) 2.0+ data with [parse-server](https://github.com/parse-community/parse-server). 
+
+For the backend, it is suggested to use [parse-hipaa](https://github.com/netreconlab/parse-hipaa) which is an out-of-the-box HIPAA compliant Parse/[Postgres](https://www.postgresql.org) or Parse/[Mongo](https://www.mongodb.com) server that comes with [Parse Dashboard](https://github.com/parse-community/parse-dashboard). Since [parse-hipaa](https://github.com/netreconlab/parse-hipaa) is a pare-server, it can be used for iOS, Android, and web based apps. API's such as [GraphQL](https://graphql.org), REST, and JS are also enabled in parse-hipaa and can be accessed directly or via the "API Console" in parse-dashboard. See the [Parse SDK documentation](https://parseplatform.org/#sdks) for details. These docker images include the necessary database auditing and logging for HIPAA compliance.
+
 
 You can also use ParseCareKit with any parse-server setup. Note that CareKit data is extremely sensitive and you are responsible for ensuring your parse-server meets HIPAA compliance.
+
+The following CareKit Entities are synchronized with Parse tables/classes:
+- [x] OCKPatient <-> Patient
+- [x] OCKCarePlan <-> CarePlan
+- [x] OCKTask <-> Task
+- [x] OCKContact <-> Contact
+- [x] OCKOutcome <-> Outcome
+- [x] OCKOutcomeValue <-> OutcomeValue
+- [x] OCKScheduleElement <-> ScheduleElement
+- [x] OCKNote <-> Note
+- [x] OCKRevisionRecord.KnowledgeVector <-> KnowledgeVector
+
 
 ## CareKit Sample App with ParseCareKit
 A sample app, [CareKitSample-ParseCareKit](https://github.com/netreconlab/CareKitSample-ParseCareKit), connects to the aforementioned [parse-hipaa](https://github.com/netreconlab/parse-hipaa) and demonstrates how CareKit data can be easily synched to the Cloud using ParseCareKit.
@@ -178,19 +193,6 @@ let cloudStoreManager = ParseSynchronizedStoreManager(dataStoreManager)
 ```
 
 During initialization of `ParseSynchronizedStoreManager`, all CareKit data that has `remoteID == nil` will automatically be synced to your parse-server, once synced, the `remoteID` for each entity will be replaced by the corresponding `objectId` on your parse-server.
-
-** Note that only the latest state of an OCK entity is synchronized to parse-server. **
-
-The mapping from CareKit -> Parse tables/classes are as follows:
-* OCKPatient <-> Patient - Note that by default of this framework, any "user" (doctor, patient, caregiver, etc.) is an `OCKPatient` and will have a corresponding record in your Parse `User` table.
-* OCKCarePlan <-> CarePlan
-* OCKTask <-> Task
-* OCKContact <-> Contact
-* OCKOutcome <-> Outcome
-* OCKOutcomeValue <-> OutcomeValue
-* OCKScheduleElement <-> ScheduleElement
-* OCKNote <-> Note
-* OCKRevisionRecord.KnowledgeVector <-> KnowledgeVector
 
 To create a Parse object from a CareKit object:
 
