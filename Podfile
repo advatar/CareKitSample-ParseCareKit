@@ -6,7 +6,7 @@ target 'OCKSample' do
 
   # All of these are required to run ParseCareKit
   pod 'CareKitUI', :git => 'https://github.com/cbaker6/CareKit.git', :branch => 'pod'
-  pod 'CareKitStore', :git => 'https://github.com/cbaker6/CareKit.git', :branch => 'pod_vector'
+  pod 'CareKitStore', :git => 'https://github.com/cbaker6/CareKit.git', :branch => 'pod'
   pod 'CareKit', :git => 'https://github.com/cbaker6/CareKit.git', :branch => 'pod'
   pod 'ParseCareKit', :git => 'https://github.com/netreconlab/ParseCareKit.git', :branch => 'master'
 

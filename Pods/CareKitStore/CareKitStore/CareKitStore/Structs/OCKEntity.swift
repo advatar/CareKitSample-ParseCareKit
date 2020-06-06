@@ -81,9 +81,7 @@ public enum OCKEntity: Equatable, Codable {
 
     var deletedDate: Date? {
         switch self {
-        case let .patient(patient): return patient.deletedDate
-        case let .carePlan(carePlan): return carePlan.deletedDate
-        case let .contact(contact): return contact.deletedDate
+        case .patient, .carePlan, .contact: fatalError("Not implemented.")
         case let .task(task): return task.deletedDate
         case let .outcome(outcome): return outcome.deletedDate
         }

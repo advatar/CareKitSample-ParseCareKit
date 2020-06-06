@@ -70,8 +70,10 @@ extension OCKStore {
                            completion: ((Result<[OCKCarePlan], OCKStoreError>) -> Void)? = nil) {
         context.perform {
             do {
-                let addedPlans = try self.createCarePlansWithoutCommitting(plans)
+                try self.validateNew(OCKCDCarePlan.self, plans)
+                let persistablePlans = plans.map(self.createCarePlan)
                 try self.context.save()
+                let addedPlans = persistablePlans.map(self.makePlan)
                 callbackQueue.async {
                     self.carePlanDelegate?.carePlanStore(self, didAddCarePlans: addedPlans)
                     self.autoSynchronizeIfRequired()
@@ -90,12 +92,14 @@ extension OCKStore {
                               completion: ((Result<[OCKCarePlan], OCKStoreError>) -> Void)? = nil) {
         context.perform {
             do {
-                let updated = try self.updateCarePlansWithoutCommitting(plans, copyUUIDs: false)
+                try self.validateUpdateIdentifiers(plans.map { $0.id })
+                let updatedPlans = try self.performVersionedUpdate(values: plans, addNewVersion: self.createCarePlan)
                 try self.context.save()
+                let plans = updatedPlans.map(self.makePlan)
                 callbackQueue.async {
-                    self.carePlanDelegate?.carePlanStore(self, didUpdateCarePlans: updated)
+                    self.carePlanDelegate?.carePlanStore(self, didUpdateCarePlans: plans)
                     self.autoSynchronizeIfRequired()
-                    completion?(.success(updated))
+                    completion?(.success(updatedPlans.map(self.makePlan)))
                 }
             } catch {
                 self.context.rollback()
@@ -130,60 +134,6 @@ extension OCKStore {
         }
     }
 
-    // MARK: Internal
-    // These methods are called from elsewhere in CareKit, but must always be called
-    // from the `contexts`'s thread.
-
-    func createCarePlansWithoutCommitting(_ plans: [Plan]) throws -> [Plan] {
-        try self.validateNew(OCKCDCarePlan.self, plans)
-        let persistablePlans = plans.map(self.createCarePlan)
-        let addedPlans = persistablePlans.map(self.makePlan)
-        return addedPlans
-    }
-
-    /// Updates existing tasks to the versions passed in.
-    ///
-    /// The copyUUIDs argument should be true when ingesting tasks from a remote to ensure
-    /// the UUIDs match on all devices, and false when creating a new version of a task locally
-    /// to ensure that the new version has a different UUID than its parent version.
-    ///
-    /// - Parameters:
-    ///   - tasks: The new versions of the tasks.
-    ///   - copyUUIDs: If true, the UUIDs of the tasks will be copied to the new versions
-    func updateCarePlansWithoutCommitting(_ plans: [Plan], copyUUIDs: Bool) throws -> [Plan] {
-        try validateUpdateIdentifiers(plans.map { $0.id })
-        try confirmUpdateWillNotCauseDataLoss(plans: plans)
-        let updatedPlans = try self.performVersionedUpdate(values: plans, addNewVersion: self.createCarePlan)
-        if copyUUIDs {
-            updatedPlans.enumerated().forEach { $1.uuid = plans[$0].uuid! }
-        }
-        let updated = updatedPlans.map(self.makePlan)
-        return updated
-    }
-    
-    // Ensure that new versions of tasks do not overwrite regions of previous
-    // versions that already have outcomes saved to them.
-    //
-    // |<------------- Time Line --------------->|
-    //  TaskV1 ------x------------------->
-    //                     V2 ---------->
-    //              V3------------------>
-    //
-    // Throws an error when updating to V3 from V2 if V1 has outcomes after `x`.
-    // Throws an error when updating to V3 from V2 if V2 has any outcomes.
-    // Does not throw when updating to V3 from V2 if V1 has outcomes before `x`.
-    func confirmUpdateWillNotCauseDataLoss(plans: [Plan]) throws {
-        let heads = fetchHeads(OCKCDCarePlan.self, ids: plans.map { $0.id })
-        for plan in heads {
-
-            // For each task, gather all outcomes
-            var currentVersion: OCKCDCarePlan? = plan
-            while let version = currentVersion {
-                currentVersion = version.previous as? OCKCDCarePlan
-            }
-        }
-    }
-    
     // MARK: Private
 
     /// - Remark: This does not commit the transaction. After calling this function one or more times, you must call `context.save()` in order to
@@ -200,7 +150,8 @@ extension OCKStore {
 
     /// - Remark: This method is intended to create a value type struct from a *persisted* NSManagedObject. Calling this method with an
     /// object that is not yet commited is a programmer error.
-    internal func makePlan(from object: OCKCDCarePlan) -> OCKCarePlan {
+    private func makePlan(from object: OCKCDCarePlan) -> OCKCarePlan {
+        assert(!object.objectID.isTemporaryID, "Don't call this method with an object that isn't saved yet")
         var plan = OCKCarePlan(id: object.id, title: object.title, patientUUID: object.patient?.uuid)
         plan.copyVersionedValues(from: object)
         return plan
