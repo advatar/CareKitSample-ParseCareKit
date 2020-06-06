@@ -2,7 +2,7 @@
 
 An example application of [CareKit](https://github.com/carekit-apple/CareKit)'s OCKSample synchronizing with [ParseCareKit](https://github.com/netreconlab/ParseCareKit). 
 
-The main branch uses a cocoapod version of CareKit that mirrors the CareKit master branch. The differences between the [pod](https://github.com/cbaker6/CareKit/tree/pod) branch and CareKits [master](https://github.com/carekit-apple/CareKit) can be seen [here](https://github.com/cbaker6/CareKit/pull/2). CareKit's master branch is currently limited to synching the following entities to Parse tables/classes:
+The main branch uses a cocoapod version of CareKit that mirrors the CareKit master branch. The differences between the [pod](https://github.com/cbaker6/CareKit/tree/pod) branch and CareKits [master](https://github.com/carekit-apple/CareKit) can be seen [here](https://github.com/cbaker6/CareKit/pull/2/files). CareKit's master branch is currently limited to synching the following entities to Parse tables/classes:
 
 - [x] OCKTask <-> Task
 - [x] OCKOutcome <-> Outcome
@@ -17,7 +17,7 @@ If you would like to synchronize the missing CarKit's entities:
 - [x] OCKCarePlan <-> CarePlan
 - [x] OCKContact <-> Contact
 
-You should fork the [experimental branch](https://github.com/netreconlab/CareKitSample-ParseCareKit/tree/experimental) instead (Note that `OCKSample` uses `Contacts`, but doesn't use `OCKPatient` or `OCKContact`). The differences are in the [Podfile](https://github.com/netreconlab/CareKitSample-ParseCareKit/blob/87873cc1c9e35f46571ca340fbf8ec74baea0b70/Podfile#L9), specifically the `CareKitStore` pod. The main branch uses the [pod](https://github.com/cbaker6/CareKit/tree/pod) branch of CareKitStore while the experimental branch uses [pod_vector](https://github.com/cbaker6/CareKit/tree/pod_vector). The differences in the pod_vector branch from CareKit's master can be seen [here](https://github.com/cbaker6/CareKit/pull/1).
+You should fork the [experimental branch](https://github.com/netreconlab/CareKitSample-ParseCareKit/tree/experimental) instead (Note that `OCKSample` uses `Contacts`, but doesn't use `OCKPatient` or `OCKContact`). The differences are in the [Podfile](https://github.com/netreconlab/CareKitSample-ParseCareKit/blob/87873cc1c9e35f46571ca340fbf8ec74baea0b70/Podfile#L9), specifically the `CareKitStore` pod. The main branch uses the [pod](https://github.com/cbaker6/CareKit/tree/pod) branch of CareKitStore while the experimental branch uses [pod_vector](https://github.com/cbaker6/CareKit/tree/pod_vector). The differences in the pod_vector branch from CareKit's master can be seen [here](https://github.com/cbaker6/CareKit/pull/1/files).
 
 
 **Use at your own risk. There is no promise that this is HIPAA compliant and we are not responsible for any mishandling of your data**
