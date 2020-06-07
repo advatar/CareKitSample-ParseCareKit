@@ -24,7 +24,7 @@
   ],
   "source_files": "ParseCareKit/**/*.swift",
   "dependencies": {
-    "CareKit": [
+    "CareKitStore": [
       "~> 2.0"
     ],
     "Parse": [
