@@ -27,7 +27,8 @@ You can setup your parse-server locally to test using [parse-hipaa](https://gith
 
 1. Fork [parse-hipaa](https://github.com/netreconlab/parse-hipaa)
 2. `cd parse-hipaa`
-3.  `docker-compose up` - this will take a couple of minutes to setup as it needs to initialize postgres, but as soon as you see `parse-server running on port 1337.`, it's ready to go. See [here](https://github.com/netreconlab/parse-hipaa#getting-started) for details.
+3.  `docker-compose up` - this will take a couple of minutes to setup as it needs to initialize postgres, but as soon as you see `parse-server running on port 1337.`, it's ready to go. See [here](https://github.com/netreconlab/parse-hipaa#getting-started) for details
+4. If you would like to use mongo instead of postgres, in step 3, type `docker-compose -f docker-compose.mongo.yml up` instead of `docker-compose up`
 
 ## Fork this repo to get the modified OCKSample app. 
 
