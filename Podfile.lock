@@ -40,16 +40,16 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   CareKit:
-    :commit: f27d419cc231745a7e3c1e4cf67ef7b8ea867b1e
+    :commit: 28eaa57ce33694ec609f447fab7f241bcca868d9
     :git: https://github.com/cbaker6/CareKit.git
   CareKitStore:
-    :commit: f27d419cc231745a7e3c1e4cf67ef7b8ea867b1e
+    :commit: 28eaa57ce33694ec609f447fab7f241bcca868d9
     :git: https://github.com/cbaker6/CareKit.git
   CareKitUI:
-    :commit: f27d419cc231745a7e3c1e4cf67ef7b8ea867b1e
+    :commit: 28eaa57ce33694ec609f447fab7f241bcca868d9
     :git: https://github.com/cbaker6/CareKit.git
   ParseCareKit:
-    :commit: 1e2b65d23f4687313a25608981b8ad7b24bdb7f6
+    :commit: 7cb4a30bfaa76858ea7b041e16a28a4cee3151d9
     :git: https://github.com/netreconlab/ParseCareKit.git
 
 SPEC CHECKSUMS:
