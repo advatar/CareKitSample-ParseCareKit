@@ -2,7 +2,7 @@
 
 An example application of [CareKit](https://github.com/carekit-apple/CareKit)'s OCKSample synchronizing with [ParseCareKit](https://github.com/netreconlab/ParseCareKit). 
 
-***NEW - The new CareKitSample+ParseCareKit app released 6/24/20 can be found on the [2.1](https://github.com/netreconlab/CareKitSample-ParseCareKit/tree/2.1) branch. You will need Xcode 12 to run it ***
+***NEW - The new CareKitSample+ParseCareKit app released 6/24/20 can be found on the [2.1](https://github.com/netreconlab/CareKitSample-ParseCareKit/tree/2.1) branch. You will need Xcode 12 to run it***
 
 The main branch uses a cocoapod version of CareKit that mirrors the CareKit master branch. The differences between the [pod](https://github.com/cbaker6/CareKit/tree/pod) branch and CareKits [master](https://github.com/carekit-apple/CareKit) can be seen [here](https://github.com/cbaker6/CareKit/pull/2/files). ParseCareKit synchs the following entities to Parse tables/classes:
 
@@ -16,7 +16,7 @@ The main branch uses a cocoapod version of CareKit that mirrors the CareKit mast
 - [x] OCKCarePlan <-> CarePlan
 - [x] OCKContact <-> Contact
 
-Note that there's currently a small bug on CareKit's master branch that prevents "deleted" entites from synching to a remote server properly. If you want the fixed version you should fork the [experimental branch](https://github.com/netreconlab/CareKitSample-ParseCareKit/tree/experimental) instead (*** for the new CareKitSample+ParseCareKit app, use the [experimental-2.1 branch](https://github.com/netreconlab/CareKitSample-ParseCareKit/tree/experimental-2.1)***). The differences are in the [Podfile](https://github.com/netreconlab/CareKitSample-ParseCareKit/blob/87873cc1c9e35f46571ca340fbf8ec74baea0b70/Podfile#L9), specifically the `CareKitStore` pod. The main branch uses the [pod](https://github.com/cbaker6/CareKit/tree/pod) branch of CareKitStore while the experimental branch uses [pod_vector](https://github.com/cbaker6/CareKit/tree/pod_vector). The differences in the pod_vector branch from CareKit's master can be seen [here](https://github.com/cbaker6/CareKit/pull/1/files).
+Note that there's currently a small bug on CareKit's master branch that prevents "deleted" entites from synching to a remote server properly. If you want the fixed version you should fork the [experimental branch](https://github.com/netreconlab/CareKitSample-ParseCareKit/tree/experimental) instead (***for the new CareKitSample+ParseCareKit app, use the [experimental-2.1 branch](https://github.com/netreconlab/CareKitSample-ParseCareKit/tree/experimental-2.1)***). The differences are in the [Podfile](https://github.com/netreconlab/CareKitSample-ParseCareKit/blob/87873cc1c9e35f46571ca340fbf8ec74baea0b70/Podfile#L9), specifically the `CareKitStore` pod. The main branch uses the [pod](https://github.com/cbaker6/CareKit/tree/pod) branch of CareKitStore while the experimental branch uses [pod_vector](https://github.com/cbaker6/CareKit/tree/pod_vector). The differences in the pod_vector branch from CareKit's master can be seen [here](https://github.com/cbaker6/CareKit/pull/1/files).
 
 
 **Use at your own risk. There is no promise that this is HIPAA compliant and we are not responsible for any mishandling of your data**
