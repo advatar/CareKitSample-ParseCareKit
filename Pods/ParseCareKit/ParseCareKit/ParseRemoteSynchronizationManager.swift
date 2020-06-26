@@ -13,23 +13,31 @@ import Parse
 /**
 Protocol that defines the properties to conform to when updates a needed and conflict resolution.
 */
-public protocol ParseRemoteSynchronizationDelegate {
+public protocol ParseRemoteSynchronizationDelegate: OCKRemoteSynchronizationDelegate {
     func chooseConflictResolutionPolicy(_ conflict: OCKMergeConflictDescription, completion: @escaping (OCKMergeConflictResolutionPolicy) -> Void)
     func storeUpdatedOutcome(_ outcome: OCKOutcome)
     func storeUpdatedCarePlan(_ carePlan: OCKCarePlan)
     func storeUpdatedContact(_ contact: OCKContact)
     func storeUpdatedPatient(_ patient: OCKPatient)
     func storeUpdatedTask(_ task: OCKTask)
+    func successfullyPushedDataToCloud()
 }
 
 open class ParseRemoteSynchronizationManager: NSObject, OCKRemoteSynchronizable {
     public var delegate: OCKRemoteSynchronizationDelegate?
-    public var parseRemoteDelegate: ParseRemoteSynchronizationDelegate?
+    public var parseRemoteDelegate: ParseRemoteSynchronizationDelegate? {
+        set{
+            parseDelegate = newValue
+            delegate = newValue
+        }get{
+            return parseDelegate
+        }
+    }
     public var automaticallySynchronizes: Bool
     public internal(set) var uuid:UUID!
     public internal(set) var customClassesToSynchronize:[String:PCKRemoteSynchronized]?
     public internal(set) var pckStoreClassesToSynchronize: [PCKStoreClass: PCKRemoteSynchronized]!
-
+    private var parseDelegate: ParseRemoteSynchronizationDelegate?
     
     public init(uuid:UUID, auto: Bool) {
         self.uuid = uuid
@@ -350,6 +358,7 @@ open class ParseRemoteSynchronizationManager: NSObject, OCKRemoteSynchronizable 
                 completion(error)
                 return
             }
+            self.parseRemoteDelegate?.successfullyPushedDataToCloud()
             completion(nil)
         }
     }

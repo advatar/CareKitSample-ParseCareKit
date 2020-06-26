@@ -40,7 +40,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Manages synchronization of a CoreData store
     lazy var synchronizedStoreManager: OCKSynchronizedStoreManager = {
         let parse = ParseRemoteSynchronizationManager(uuid: UUID(uuidString: "3B5FD9DA-C278-4582-90DC-101C08E7FC98")!, auto: true)
-        parse.delegate = self
         parse.parseRemoteDelegate = self
         let store = OCKStore(name: "SampleAppStore", type: .onDisk, remote: parse)
         store.populateSampleData()
@@ -163,6 +162,10 @@ private extension OCKStore {
 }
 
 extension AppDelegate: OCKRemoteSynchronizationDelegate, ParseRemoteSynchronizationDelegate{
+    func successfullyPushedDataToCloud() {
+        print("Implement")
+    }
+    
     func didRequestSynchronization(_ remote: OCKRemoteSynchronizable) {
         print("Implement")
     }
@@ -172,7 +175,7 @@ extension AppDelegate: OCKRemoteSynchronizationDelegate, ParseRemoteSynchronizat
     }
     
     func chooseConflictResolutionPolicy(_ conflict: OCKMergeConflictDescription, completion: @escaping (OCKMergeConflictResolutionPolicy) -> Void) {
-        let conflictPolicy = OCKMergeConflictResolutionPolicy.keepDevice
+        let conflictPolicy = OCKMergeConflictResolutionPolicy.keepRemote
         completion(conflictPolicy)
     }
     
