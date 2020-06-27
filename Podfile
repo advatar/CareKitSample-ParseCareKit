@@ -5,9 +5,9 @@ target 'OCKSample' do
   use_frameworks!
 
   # All of these are required to run ParseCareKit
-  pod 'CareKitUI', :git => 'https://github.com/cbaker6/CareKit.git', :branch => 'pod'
-  pod 'CareKitStore', :git => 'https://github.com/cbaker6/CareKit.git', :branch => 'pod'
-  pod 'CareKit', :git => 'https://github.com/cbaker6/CareKit.git', :branch => 'pod'
+  pod 'CareKitUI', :git => 'https://github.com/cbaker6/CareKit.git', :branch => 'pod-2.0.2'
+  pod 'CareKitStore', :git => 'https://github.com/cbaker6/CareKit.git', :branch => 'pod_vector-2.0.2'
+  pod 'CareKit', :git => 'https://github.com/cbaker6/CareKit.git', :branch => 'pod-2.0.2'
   pod 'ParseCareKit', :git => 'https://github.com/netreconlab/ParseCareKit.git', :branch => 'main'
 
 end

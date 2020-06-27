@@ -16,9 +16,6 @@ The main branch uses a cocoapod version of CareKit that mirrors the CareKit mast
 - [x] OCKCarePlan <-> CarePlan
 - [x] OCKContact <-> Contact
 
-The differences are in the [Podfile](https://github.com/netreconlab/CareKitSample-ParseCareKit/blob/87873cc1c9e35f46571ca340fbf8ec74baea0b70/Podfile#L9), specifically the `CareKitStore` pod. The main branch uses the [pod](https://github.com/cbaker6/CareKit/tree/pod) branch of CareKitStore while the experimental branch uses [pod_vector](https://github.com/cbaker6/CareKit/tree/pod_vector). The differences in the pod_vector branch from CareKit's master can be seen [here](https://github.com/cbaker6/CareKit/pull/1/files).
-
-
 **Use at your own risk. There is no promise that this is HIPAA compliant and we are not responsible for any mishandling of your data**
 
 ## Setup Your Parse Server
