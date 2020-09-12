@@ -4,7 +4,7 @@ An example application of [CareKit](https://github.com/carekit-apple/CareKit)'s 
 
 ***NEW - The new CareKitSample+ParseCareKit app released 6/24/20 can be found on the [2.1](https://github.com/netreconlab/CareKitSample-ParseCareKit/tree/2.1) branch. You will need Xcode 12 to run it***
 
-The main branch uses a cocoapod version of CareKit that mirrors the CareKit master branch. The differences between the [pod](https://github.com/cbaker6/CareKit/tree/pod) branch and CareKits [master](https://github.com/carekit-apple/CareKit) can be seen [here](https://github.com/cbaker6/CareKit/pull/2/files). ParseCareKit synchs the following entities to Parse tables/classes:
+The main branch uses a cocoapod version of CareKit that mirrors the CareKit main branch. The differences between the [pod](https://github.com/cbaker6/CareKit/tree/pod) branch and CareKits [main](https://github.com/carekit-apple/CareKit) can be seen [here](https://github.com/cbaker6/CareKit/pull/2/files). ParseCareKit synchs the following entities to Parse tables/classes:
 
 - [x] OCKTask <-> Task
 - [x] OCKOutcome <-> Outcome
