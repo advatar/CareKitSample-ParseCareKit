@@ -4,7 +4,7 @@ An example application of [CareKit](https://github.com/carekit-apple/CareKit)'s 
 
 ***NEW - This branch is for CareKit 2.1 version of OCKSample. Just like the [What's New in CareKit](https://developer.apple.com/videos/play/wwdc2020/10151/) WWDC20 video, this branch implements syncing between the AppleWatch (setting the flag in `ExtensionDelegate.swift` and `AppDelegate.swift` to  `syncWithCloud = false`. Different from the video, setting `syncWithCloud = true` in the aforementioned files syncs with a Parse Server. If you are looking for the Xcode 11 version, go to the [main](https://github.com/netreconlab/CareKitSample-ParseCareKit/) branch. You will need Xcode 12 to run this branch***
 
-The main branch uses a cocoapod version of CareKit that mirrors the CareKit master branch. The differences between the [pod](https://github.com/cbaker6/CareKit/tree/pod) branch and CareKits [master](https://github.com/carekit-apple/CareKit) can be seen [here](https://github.com/cbaker6/CareKit/pull/2/files). ParseCareKit synchs the following entities to Parse tables/classes:
+The main branch uses a cocoapod version of CareKit that mirrors the CareKit main branch. The differences between the [pod](https://github.com/cbaker6/CareKit/tree/pod) branch and CareKits [main](https://github.com/carekit-apple/CareKit) can be seen [here](https://github.com/cbaker6/CareKit/pull/2/files). ParseCareKit synchs the following entities to Parse tables/classes:
 
 - [x] OCKTask <-> Task
 - [x] OCKOutcome <-> Outcome
@@ -15,9 +15,6 @@ The main branch uses a cocoapod version of CareKit that mirrors the CareKit mast
 - [x] OCKPatient <-> Patient
 - [x] OCKCarePlan <-> CarePlan
 - [x] OCKContact <-> Contact
-
-Note that there's currently a small bug on CareKit's master branch that prevents "deleted" entites from synching to a remote server properly. If you want the fixed version you should fork the [experimental branch](https://github.com/netreconlab/CareKitSample-ParseCareKit/tree/experimental) instead. The differences are in the [Podfile](https://github.com/netreconlab/CareKitSample-ParseCareKit/blob/87873cc1c9e35f46571ca340fbf8ec74baea0b70/Podfile#L9), specifically the `CareKitStore` pod. The main branch uses the [pod](https://github.com/cbaker6/CareKit/tree/pod) branch of CareKitStore while the experimental branch uses [pod_vector](https://github.com/cbaker6/CareKit/tree/pod_vector). The differences in the pod_vector branch from CareKit's master can be seen [here](https://github.com/cbaker6/CareKit/pull/1/files).
-
 
 **Use at your own risk. There is no promise that this is HIPAA compliant and we are not responsible for any mishandling of your data**
 
