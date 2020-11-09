@@ -44,6 +44,11 @@ class CareViewController: OCKDailyPageViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(synchronizeWithRemote))
 
         NotificationCenter.default.addObserver(self, selector: #selector(synchronizeWithRemote), name: Notification.Name(rawValue: "firstLoginSyncComplete"), object: nil)
+        
+        //@pranjalsatija This use to cause the crash
+        guard User.current != nil else {
+            return
+        }
     }
 
     @objc private func synchronizeWithRemote() {
