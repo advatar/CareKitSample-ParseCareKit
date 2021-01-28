@@ -1069,8 +1069,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/netreconlab/ParseCareKit.git";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = revision;
+				revision = b9df0985ea91422cc46378ff7f5dd6730b8d4a20;
 			};
 		};
 		709FDC0F25BBDDBF00FF2F0F /* XCRemoteSwiftPackageReference "CareKit" */ = {
