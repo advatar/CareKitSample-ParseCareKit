@@ -91,11 +91,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     return
                 }
                 parse = try ParseRemoteSynchronizationManager(uuid: uuid, auto: false, subscribeToServerUpdates: true)
-                coreDataStore = OCKStore(name: "ParseStore", type: .onDisk(), remote: parse)
+                coreDataStore = OCKStore(name: "ParseStore", type: .onDisk, remote: parse)
                 parse?.parseRemoteDelegate = self
                 sessionDelegate = CloudSyncSessionDelegate(store: coreDataStore)
             }else{
-                coreDataStore = OCKStore(name: "WatchStore", type: .onDisk(), remote: watch)
+                coreDataStore = OCKStore(name: "WatchStore", type: .onDisk, remote: watch)
                 watch.delegate = self
                 sessionDelegate = LocalSyncSessionDelegate(remote: watch, store: coreDataStore)
             }
